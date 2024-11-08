@@ -1,0 +1,70 @@
+Site,Land cover,Taxonomic group,Trophic  level,N of individuals, Name ,Polyethylene,Polyester,Polyproplene,Epoxy resin,Polyacrylamide,Nylon,Cellophane,Poly isobutene film,Polystrene,Polyvinyl acetate,Zein,Aluminium silicate,Triglyceride film 
+1,Calcareous grassland,Stylommatophora,Herbivore,12,Garden snail,0,1,0,0,0,0,0,0,0,0,1,0,0
+1,Calcareous grassland,Stylommatophora,Herbivore,1,Glass snail,1,0,0,0,0,0,0,0,0,0,0,0,0
+1,Calcareous grassland,Stylommatophora,Herbivore,5,Large red slug,0,0,0,0,0,0,0,0,0,1,0,0,0
+1,Calcareous grassland,Coleoptera,Herbivore,3,thick legged flower beetle,0,1,0,0,0,0,0,0,0,0,0,0,0
+2,Calcareous grassland,Stylommatophora,Herbivore,9,Garden snail,0,1,0,0,0,0,0,0,0,0,0,0,0
+2,Arable and Horticulture,Stylommatophora,Carnivore,2,Leopard slug,0,0,0,0,1,0,0,0,0,0,0,0,0
+3,Suburban,Coleoptera,Carnivore,1,22 spotted ladybird,0,0,0,1,0,0,0,0,0,0,0,0,0
+3,Suburban,Coleoptera,Carnivore,1,6 spotted ladybird,1,1,0,0,0,0,0,0,0,0,0,0,0
+3,Suburban,Opisthopora,Detrivore,2,Rosy tipped worm,1,0,0,0,0,0,0,0,0,0,0,0,0
+4,Suburban,Lepidoptera,Herbivore,2,Common marbled carpet,0,1,0,0,0,0,0,0,0,0,0,0,0
+4,Suburban,Coleoptera,Carnivore,1,Pterostichus versicolor,0,0,1,0,0,0,0,0,0,0,0,0,0
+5,Suburban,Opisthopora,Detrivore,3,Rosy tipped worm,0,0,0,0,0,0,0,0,0,0,0,0,0
+6,Calcareous grassland,Coleoptera,Herbivore,3,Mint leaf beetle,0,0,1,0,0,0,0,0,0,0,0,0,0
+6,Calcareous grassland,Coleoptera,Herbivore,1,Pill beetle,1,0,0,0,0,0,0,0,0,0,0,0,0
+7,Improved grassland,Coleoptera,Herbivore,1,Mint leaf beetle,0,0,0,1,0,0,0,0,0,0,0,0,0
+7,Improved grassland,Isopoda,Detrivore,4,Rough woodlouse ,0,0,0,0,0,0,0,0,0,0,1,0,0
+8,Arable and Horticulture,Hemiptera,Herbivore,3,Common froghopper,0,1,0,0,0,0,0,0,0,0,0,0,0
+8,Arable and Horticulture,Lepidoptera,Herbivore,2,Common marbled carpet,0,0,0,0,1,0,0,0,0,0,0,0,0
+8,Arable and Horticulture,Hemiptera,Herbivore,1,Forest bug,0,0,0,0,0,1,0,0,0,0,0,0,0
+9,Arable and Horticulture,Coleoptera,Carnivore,2,6 spotted ladybird,0,0,0,0,1,0,0,0,0,0,0,0,0
+9,Arable and Horticulture,Hemiptera,Herbivore,1,Common green shield bug,0,1,0,0,0,0,0,0,0,0,0,0,0
+10,Improved grassland,Hemiptera,Herbivore,4,Common green shield bug,0,1,0,0,0,0,1,0,0,0,0,0,0
+10,Improved grassland,Stylommatophora,Herbivore,1,Kentish snail,0,1,0,0,0,0,0,0,0,0,0,0,0
+10,Improved grassland,Coleoptera,Carnivore,2,Pterostichus versicolor,0,1,0,0,0,0,0,0,0,0,0,0,0
+11,Improved grassland,Opisthopora,Detrivore,2,Black headed earthworm,0,1,0,0,0,0,0,0,0,0,0,0,0
+11,Improved grassland,Stylommatophora,Herbivore,4,Kentish snail,0,0,0,0,0,0,0,0,0,0,0,0,0
+12,Improved grassland,Coleoptera,Carnivore,9,Orange ladybird,0,0,0,0,0,0,0,0,1,0,0,0,0
+12,Improved grassland,Coleoptera,Carnivore,1,Pterostichus madidus,0,0,0,0,0,0,0,0,0,1,0,0,0
+13,Suburban,Lepidoptera,Herbivore,2,Peacock,0,0,0,0,0,1,0,0,0,0,0,0,0
+14,Calcareous grassland,Stylommatophora,Herbivore,7,Garden snail,1,0,0,0,0,0,0,0,0,1,0,0,0
+14,Calcareous grassland,Stylommatophora,Herbivore,2,Large red slug,0,0,1,0,0,0,0,0,0,0,0,0,0
+15,Calcareous grassland,Stylommatophora,Herbivore,2,Garden snail,1,0,0,0,0,0,0,0,0,0,0,1,0
+15,Calcareous grassland,Stylommatophora,Herbivore,1,Kentish snail,0,1,0,0,0,0,0,0,0,0,0,0,0
+16,Suburban,Hemiptera,Herbivore,1,Green shield bug,0,1,0,0,0,0,0,0,0,0,0,0,0
+16,Suburban,Isopoda,Detrivore,7,Rough woodlouse ,0,1,1,1,0,0,0,0,0,0,0,0,0
+17,Improved grassland,Coleoptera,Herbivore,1,Mint leaf beetle,0,0,0,0,0,0,0,1,0,0,0,0,0
+17,Improved grassland,Opisthopora,Detrivore,1,Rosy tipped worm,0,0,0,0,1,0,0,0,0,0,0,0,0
+17,Improved grassland,Stylommatophora,Herbivore,8,White lipped snail,0,1,0,0,0,0,0,0,0,0,0,0,0
+18,Improved grassland,Lepidoptera,Herbivore,1,Red admiral,0,1,0,0,0,0,0,0,0,0,0,0,0
+19,Urban,Opisthopora,Detrivore,1,Rosy tipped worm,0,0,0,0,0,0,0,0,1,0,0,0,0
+20,Suburban,Isopoda,Detrivore,25,Rough woodlouse ,0,0,1,0,0,0,0,0,0,0,0,0,0
+21,Suburban,Isopoda,Detrivore,2,Common shiny ,1,0,0,0,0,0,0,0,0,0,0,0,0
+21,Suburban,Lepidoptera,Herbivore,2,Red admiral,0,1,0,0,0,0,0,0,0,0,0,0,0
+21,Suburban,Lepidoptera,Herbivore,2,Reddish light arches,0,0,0,0,0,0,1,0,0,0,0,0,0
+22,Suburban,Stylommatophora,Herbivore,12,Garden snail,1,0,0,0,0,0,0,0,0,0,0,1,1
+22,Suburban,Coleoptera,Carnivore,3,Harlequin ladybird,0,1,0,0,0,0,0,0,0,0,0,0,0
+23,Improved grassland,Coleoptera,Carnivore,1,Pterostichus madidus,0,1,0,0,0,0,0,0,0,0,0,0,0
+24,Arable and Horticulture,Stylommatophora,Herbivore,1,Garden snail,0,1,0,0,0,0,0,0,0,0,0,0,0
+24,Arable and Horticulture,Stylommatophora,Herbivore,1,Kentish snail,0,1,0,0,0,0,0,0,0,0,0,0,0
+24,Arable and Horticulture,Stylommatophora,Herbivore,2,White lipped snail,0,0,0,0,0,0,1,0,0,0,0,0,0
+25,Arable and Horticulture,Coleoptera,Carnivore,2,6 spotted ladybird,0,1,0,0,0,0,0,0,0,0,0,0,0
+25,Arable and Horticulture,Stylommatophora,Herbivore,10,Kentish snail,0,0,0,0,0,1,0,0,0,0,0,0,0
+25,Arable and Horticulture,Stylommatophora,Herbivore,5,Pointed snail,0,0,0,0,0,1,0,0,0,0,0,0,0
+25,Arable and Horticulture,Coleoptera,Herbivore,2,thick legged flower beetle,0,1,0,0,0,0,0,0,0,0,0,0,0
+26,Arable and Horticulture,Coleoptera,Carnivore,6,7 spotted ladybird,0,0,0,0,1,0,0,0,0,0,0,0,0
+26,Arable and Horticulture,Lepidoptera,Herbivore,2,Broom moth,0,1,0,0,0,0,0,0,0,0,0,0,0
+26,Arable and Horticulture,Stylommatophora,Herbivore,23,Kentish snail,0,0,0,0,0,1,0,0,0,1,0,0,0
+27,Arable and Horticulture,Lepidoptera,Herbivore,1,Yellow barred brindle,0,0,1,0,0,0,0,0,0,0,0,0,0
+28,Calcareous grassland,Hemiptera,Herbivore,1,Hairy shield bug,0,0,0,1,0,0,0,0,0,0,0,0,0
+29,Arable and Horticulture,Coleoptera,Herbivore,1,Fire bug,1,0,0,0,0,0,0,0,0,0,0,0,0
+29,Arable and Horticulture,Stylommatophora,Herbivore,6,Round lipped snail,0,0,0,0,0,0,1,0,0,0,0,0,0
+30,Arable and Horticulture,Coleoptera,Carnivore,2,Orange ladybird,0,1,0,0,0,0,0,0,0,0,0,0,0
+31,Arable and Horticulture,Coleoptera,Carnivore,5,6 spotted ladybird,0,1,0,0,0,0,0,0,0,0,0,0,0
+32,Arable and Horticulture,Isopoda,Detrivore,3,Common striped ,0,0,0,0,0,1,0,0,0,0,0,0,0
+33,Arable and Horticulture,Isopoda,Detrivore,2,Common Pill,0,0,1,0,0,0,0,0,0,0,0,0,0
+33,Arable and Horticulture,Stylommatophora,Herbivore,1,Kentish snail,0,1,0,0,0,0,0,0,0,0,0,0,0
+33,Arable and Horticulture,Coleoptera,Omnivore,13,Red footed soldier beetle,0,1,0,0,0,0,0,0,0,0,0,0,0
+33,Arable and Horticulture,Lepidoptera,Herbivore,1,Reddish light arches,0,0,0,0,0,0,0,0,0,0,0,0,0
+34,Suburban,Stylommatophora,Herbivore,2,Garden snail,0,1,0,0,0,0,0,0,0,0,0,1,0

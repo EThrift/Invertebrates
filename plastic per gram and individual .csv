@@ -1,0 +1,70 @@
+Site,Land cover,Taxonomic group,Trophic  level,N of individuals, Name ,Weight,N  pieces of plastics,Plastic per gram
+1,Calcareous grassland,Stylommatophora,Herbivore,12,Garden snail,1,5,5
+1,Calcareous grassland,Stylommatophora,Herbivore,1,Glass snail,0.04,1,20
+1,Calcareous grassland,Stylommatophora,Herbivore,5,Large red slug,0.45,5,11
+1,Calcareous grassland,Coleoptera,Herbivore,3,thick legged flower beetle,0.01,2,100
+2,Calcareous grassland,Stylommatophora,Herbivore,9,Garden snail,1,1,1
+2,Arable and Horticulture,Stylommatophora,Carnivore,2,Leopard slug,0.03,1,25
+3,Suburban,Coleoptera,Carnivore,1,22 spotted ladybird,0.02,1,33
+3,Suburban,Coleoptera,Carnivore,1,6 spotted ladybird,0.1,2,20
+3,Suburban,Opisthopora,Detrivore,2,Rosy tipped worm,0.11,1,9
+4,Suburban,Lepidoptera,Herbivore,2,Common marbled carpet,0.03,1,25
+4,Suburban,Coleoptera,Carnivore,1,Pterostichus versicolor,0.04,1,21
+5,Suburban,Opisthopora,Detrivore,3,Rosy tipped worm,0.05,4,67
+6,Calcareous grassland,Coleoptera,Herbivore,3,Mint leaf beetle,0.08,1,10
+6,Calcareous grassland,Coleoptera,Herbivore,1,Pill beetle,0.03,1,33
+7,Improved grassland,Coleoptera,Herbivore,1,Mint leaf beetle,0.07,1,13
+7,Improved grassland,Isopoda,Detrivore,4,Rough woodlouse ,0.04,1,25
+8,Arable and Horticulture,Hemiptera,Herbivore,3,Common froghopper,0.07,4,50
+8,Arable and Horticulture,Lepidoptera,Herbivore,2,Common marbled carpet,0.03,2,67
+8,Arable and Horticulture,Hemiptera,Herbivore,1,Forest bug,0.06,3,43
+9,Arable and Horticulture,Coleoptera,Carnivore,2,6 spotted ladybird,0.03,1,33
+9,Arable and Horticulture,Hemiptera,Herbivore,1,Common green shield bug,0.04,2,50
+10,Improved grassland,Hemiptera,Herbivore,4,Common green shield bug,0.19,1,5
+10,Improved grassland,Stylommatophora,Herbivore,1,Kentish snail,0.04,4,100
+10,Improved grassland,Coleoptera,Carnivore,2,Pterostichus versicolor,0.03,2,67
+11,Improved grassland,Opisthopora,Detrivore,2,Black headed earthworm,0.24,1,4
+11,Improved grassland,Stylommatophora,Herbivore,4,Kentish snail,0.02,2,67
+12,Improved grassland,Coleoptera,Carnivore,9,Orange ladybird,0.08,2,23
+12,Improved grassland,Coleoptera,Carnivore,1,Pterostichus madidus,0.006,1,167
+13,Suburban,Lepidoptera,Herbivore,2,Peacock,0.119,2,17
+14,Calcareous grassland,Stylommatophora,Herbivore,7,Garden snail,1,6,6
+14,Calcareous grassland,Stylommatophora,Herbivore,2,Large red slug,0.81,1,1
+15,Calcareous grassland,Stylommatophora,Herbivore,2,Garden snail,0.524,3,6
+15,Calcareous grassland,Stylommatophora,Herbivore,1,Kentish snail,0.03,1,33
+16,Suburban,Hemiptera,Herbivore,1,Green shield bug,0.05,1,17
+16,Suburban,Isopoda,Detrivore,7,Rough woodlouse ,0.47,3,6
+17,Improved grassland,Coleoptera,Herbivore,1,Mint leaf beetle,0.03,1,33
+17,Improved grassland,Opisthopora,Detrivore,1,Rosy tipped worm,0.04,1,25
+17,Improved grassland,Stylommatophora,Herbivore,8,White lipped snail,0.45,2,4
+18,Improved grassland,Lepidoptera,Herbivore,1,Red admiral,0.01,1,50
+19,Urban,Opisthopora,Detrivore,1,Rosy tipped worm,0.02,1,50
+20,Suburban,Isopoda,Detrivore,25,Rough woodlouse ,0.25,2,8
+21,Suburban,Isopoda,Detrivore,2,Common shiny ,0.14,2,14
+21,Suburban,Lepidoptera,Herbivore,2,Red admiral,0.086,2,20
+21,Suburban,Lepidoptera,Herbivore,2,Reddish light arches,0.047,1,20
+22,Suburban,Stylommatophora,Herbivore,12,Garden snail,1,38,38
+22,Suburban,Coleoptera,Carnivore,3,Harlequin ladybird,0.02,1,50
+23,Improved grassland,Coleoptera,Carnivore,1,Pterostichus madidus,0.03,1,33
+24,Arable and Horticulture,Stylommatophora,Herbivore,1,Garden snail,0.3,1,3
+24,Arable and Horticulture,Stylommatophora,Herbivore,1,Kentish snail,0.03,3,100
+24,Arable and Horticulture,Stylommatophora,Herbivore,2,White lipped snail,0.01,1,100
+25,Arable and Horticulture,Coleoptera,Carnivore,2,6 spotted ladybird,0.02,1,50
+25,Arable and Horticulture,Stylommatophora,Herbivore,10,Kentish snail,0.36,1,3
+25,Arable and Horticulture,Stylommatophora,Herbivore,5,Pointed snail,0.22,1,5
+25,Arable and Horticulture,Coleoptera,Herbivore,2,thick legged flower beetle,0.02,1,50
+26,Arable and Horticulture,Coleoptera,Carnivore,6,7 spotted ladybird,0.1,2,20
+26,Arable and Horticulture,Lepidoptera,Herbivore,2,Broom moth,0.11,1,9
+26,Arable and Horticulture,Stylommatophora,Herbivore,23,Kentish snail,0.22,1,5
+27,Arable and Horticulture,Lepidoptera,Herbivore,1,Yellow barred brindle,0.06,1,14
+28,Calcareous grassland,Hemiptera,Herbivore,1,Hairy shield bug,0.04,1,25
+29,Arable and Horticulture,Coleoptera,Herbivore,1,Fire bug,0.05,1,20
+29,Arable and Horticulture,Stylommatophora,Herbivore,6,Round lipped snail,0.05,2,40
+30,Arable and Horticulture,Coleoptera,Carnivore,2,Orange ladybird,0.02,1,50
+31,Arable and Horticulture,Coleoptera,Carnivore,5,6 spotted ladybird,0.06,1,17
+32,Arable and Horticulture,Isopoda,Detrivore,3,Common striped ,0.03,4,133
+33,Arable and Horticulture,Isopoda,Detrivore,2,Common Pill,0.05,1,20
+33,Arable and Horticulture,Stylommatophora,Herbivore,1,Kentish snail,0.06,1,17
+33,Arable and Horticulture,Coleoptera,Omnivore,13,Red footed soldier beetle,0.08,2,25
+33,Arable and Horticulture,Lepidoptera,Herbivore,1,Reddish light arches,0.189,1,5
+34,Suburban,Stylommatophora,Herbivore,2,Garden snail,1,4,4
