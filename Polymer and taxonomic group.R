@@ -1,6 +1,6 @@
 #created on 22/08/24
 # By Emily Thrift
-# script for a glm to assess the levels of polymer levels in both the taxonomic groups and trophic levels of different invertebrate samples tested 
+# script for a glm to  assess the levels of polymer levels in both the taxonomic groups and trophic levels of different invertebrate samples tested 
 
 #load libraries
 library(tidyverse)
@@ -18,12 +18,11 @@ df_polymer <- read.csv("Polymer.csv")
 # Remove spaces from column names
 colnames(df_polymer) <- make.names(colnames(df_polymer))
 
-
-
-
 df_taxonomic <- read.csv ("Taxonomic_group.csv")
 colnames(df_taxonomic) <- make.names(colnames(df_taxonomic))
 
+df_taxonomic_talk <- read.csv ("Taxonomic_group_talk.csv")
+colnames(df_taxonomic_talk) <- make.names(colnames(df_taxonomic_talk))
 df_taxonomic
 
 library(binom)
@@ -44,9 +43,6 @@ totals2$TotalLabel <- paste("N =", totals2$Total)
 
 totals2
 
-library(ggplot2)
-library(ggpattern)
-
 # Convert Polymer to a factor
 df_taxonomic$Polymer <- factor(df_taxonomic$Polymer)
 
@@ -66,7 +62,7 @@ ggplot(df_taxonomic, aes(x = Polymer, y = Percentage)) +  # Reorder points by Pe
   labs(x = "Polymer Type", y = "% of Polymer") +
   theme_bw() +
   theme(
-    axis.text.x = element_text(size = 10, angle = 45, hjust = 1),  # Adjust angle and size for better visibility
+    axis.text.x = element_text(size = 12, angle = 90, hjust = 1),  # Adjust angle and size for better visibility
     axis.text.y = element_text(size = 12),
     axis.title.x = element_text(size = 14),
     axis.title.y = element_text(size = 14),
@@ -77,7 +73,73 @@ ggplot(df_taxonomic, aes(x = Polymer, y = Percentage)) +  # Reorder points by Pe
   ) +
   facet_wrap(~ Taxonomic.group, scales = "free_x", ncol = 6) 
 
-colnames(df_taxonomic)
+
+#Calculate Wilson Confidence Intervals for each taxonomic group
+wilson_ci2 <- binom.confint(x = df_taxonomic_talk$n, n = df_taxonomic_talk$Total, method = "wilson")
+
+#Add the confidence intervals to the data
+df_taxonomic_talk <- df_taxonomic_talk %>%
+  mutate(lower = wilson_ci2$lower,
+         upper = wilson_ci2$upper)
+
+# Calculate label positions just above the error bars
+df_taxonomic_talk$label_y <- df_taxonomic_talk$upper * 100 + 3.5
+
+#Summarize the total for each taxonomic group and create a label with "N = "
+totals2 <- df_taxonomic_talk %>% 
+  group_by(Taxonomic.group) %>%
+  summarize(Total = unique(Total))
+totals2$TotalLabel <- paste("N =", totals2$Total)
+
+# Load RColorBrewer for color-blind friendly palettes
+library(RColorBrewer)
+
+# Define a color-blind friendly palette with 8 colors (adjusting for the number of Polymer types)
+# Define a named color palette for each polymer
+color_blind_friendly_palette <- c(
+  "Other" = "#1f77b4",        # Blue
+  "Polyester" = "#ff7f0e",    # Orange
+  "Polyethylene" = "#2ca02c", # Green
+  "Polypropylene" = "#17becf",# Cyan
+  "Polystyrene" = "#9467bd",  # Purple
+  "Cellophane" = "#e377c2",   # Pink
+  "Epoxy resin" = "#7f7f7f",  # Gray
+  "Nylon" = "yellow",        # Yellow
+  "Aluminium silicate" = "#8d8d8d"  # Dark Gray
+)
+
+
+
+# Ensure Polymer is a factor with "Other" as the first level in df_taxonomic_talk
+df_taxonomic_talk$Polymer <- factor(df_taxonomic_talk$Polymer, 
+                                    levels = c("Other", "Polyester", "Polyethylene", "Polypropylene", 
+                                               "Polystyrene", "Cellophane", "Epoxy resin", 
+                                               "Nylon", "Aluminium silicate"))
+
+# Plot the data with custom colors
+ggplot(df_taxonomic_talk, aes(x = Polymer, y = Percentage, fill = Polymer)) +  
+  geom_col(position = position_dodge(width = 0.8), color = "black") +  # Bar chart
+  geom_errorbar(aes(ymin = lower * 100, ymax = upper * 100), 
+                position = position_dodge(width = 0.8), width = 0.25) +  # Error bars
+  geom_text(aes(y = label_y + 5, label = paste(n)),  # Add "n = " before the n value
+            position = position_dodge(width = 0.8), size = 2.5, color = "black") +  # Label count above bars
+  labs(x = "Polymer Type in Taxonomic Groups", y = "% of Polymer") +  # Axis labels
+  scale_fill_manual(values = setNames(color_blind_friendly_palette, levels(df_taxonomic_talk$Polymer))) +  # Assign custom colors
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(size = 12, angle = 90, hjust = 1),  # Rotate x-axis labels for readability
+    axis.text.y = element_text(size = 12),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = "none",  # Remove the legend
+    plot.margin = margin(1, 1, 1, 1, "cm"),  # Increase plot margin for spacing
+    strip.text = element_text(size = 12, color = "black")  # Change facet label color
+  ) +
+  facet_wrap(~ Taxonomic.group, scales = "free_x", ncol = 6)  # Facet by Taxonomic.group with free x scales
+
+
 
 
 # Reshape data into long format for easier analysis
@@ -94,6 +156,7 @@ diversity_indices_simpson <- df_long %>%
     Simpson = 1 - sum((Presence / sum(Presence))^2),
     Richness = n()
   )
+
 
 kruskal_test <- kruskal.test(Simpson ~ Taxonomic.group, data = diversity_indices_simpson)
 
@@ -155,58 +218,92 @@ library(factoextra)
 
 df_polymer
 # Summarize polymer data per taxonomic group (wide format)
-df_pca <- df_polymer %>%
+df_mca <- df_polymer %>%
   group_by(Taxonomic.group) %>%
   summarise(across(12:24, sum))  # Sum the presence/absence for each polymer
 
-df_pca
+df_mca
 
-# Perform PCA on the polymer columns
-pca_result <- PCA(df_pca[, -1], graph = FALSE)  # Exclude the first column (Taxonomic.group)
 
-# Check if Taxonomic.group exists and is a factor or character
-df_pca$Taxonomic.group <- as.factor(df_pca$Taxonomic.group)
+# Ensure Taxonomic.group is a factor
+df_mca$Taxonomic.group <- as.factor(df_mca$Taxonomic.group)
 
-# Run PCA excluding the first column (Taxonomic.group), assuming the remaining columns are polymer data
-pca_result <- PCA(df_pca[, -1], graph = FALSE)
+# Convert remaining columns (polymer data) to factors for MCA
+df_mca[, -1] <- lapply(df_mca[, -1], function(x) {
+  as.factor(ifelse(x > 0, "Present", "Absent"))
+})
 
-pca_result
+# Perform MCA on the summarized data (excluding Trophic.level)
+mca_result <- MCA(df_mca[, -1], graph = FALSE)
 
+# Extract variable coordinates for labeling
+mca_coords <- data.frame(mca_result$var$coord)
+mca_coords$polymer <- rownames(mca_coords)  # Retain polymer names for labels
+
+# Adjust positions for label placement
+mca_coords$label_x <- mca_coords$Dim.1 * 1.2
+
+mca_coords$label_y <- mca_coords$Dim.2 * 1.2
+
+# Filter MCA coordinates to include only "Present" polymers
+present_coords <- mca_coords %>%
+  filter(grepl("Present", polymer)) %>%     # Keep only "Present" labels
+  mutate(polymer = gsub("_Present", "", polymer))  # Remove "_Present" suffix from labels
+
+# Create MCA biplot without red triangles but keep trophic level points
+
+# Extract percentages of variance explained by each dimension
+percent_var <- mca_result$eig[, 2]  # Second column contains the percentages
 library(ggrepel)
 
-# Run PCA excluding the first column (Taxonomic.group), assuming the remaining columns are polymer data
-pca_result <- PCA(df_pca[, -1], graph = FALSE)
+# Create MCA biplot for Taxonomic Group
+x_limit <- c(floor(min(c(mca_result$ind$coord[, 1], mca_result$ind$coord[, 2]))) - 1, 
+             ceiling(max(c(mca_result$ind$coord[, 1], mca_result$ind$coord[, 2]))) + 1)
 
-pca_result
-# Extract the PCA variable coordinates and labels
-pca_coords <- as.data.frame(pca_result$var$coord)  # Variable coordinates
-arrow_labels <- rownames(pca_coords)  
+y_limit <- x_limit  # You can use the same limits for y-axis
 
-# Check the content of pca_coords to ensure it's created correctly
-print(head(pca_coords))
+# Save limits to file
+saveRDS(list(x_limit = x_limit, y_limit = y_limit), "axis_limits.rds")
 
-# Calculate label positions near the end of the arrows
-pca_coords$label_x <- pca_coords$Dim.1 * 4.2  # Position label at 90% of the arrow length on x-axis
-pca_coords$label_y <- pca_coords$Dim.2 * 4.2  # Position label at 90% of the arrow length on y-axis
 
-# Plot with labels positioned near the arrowheads
-fviz_pca_biplot(
-  pca_result,
-  label = "none",                      # Do not show default variable labels
-  habillage = df_pca$Taxonomic.group,    # Color points by Trophic level
-  addEllipses = TRUE,                  # Add concentration ellipses
-  palette = "Set1"                     # Set color palette
-) + 
-  geom_point(aes(color = df_pca$Taxonomic.group), size = 4, shape = 16) +  # Round points only
-  scale_color_brewer(palette = "Set1") +  # Use a color palette
-  theme_minimal() +                       # Use a minimal theme
-  theme(legend.position = "right") +      # Position the legend
-  geom_text(
-    data = pca_coords,                    # Use updated variable coordinates for label placement
-    aes(x = label_x,                      # Adjusted x coordinate near the arrowhead
-        y = label_y,                      # Adjusted y coordinate near the arrowhead
-        label = arrow_labels),            # Use variable names for labels
-    size = 4,                             # Adjust text size for clarity
-    hjust = 0.5,                          # Center text horizontally
-    vjust = -0.5                          # Adjust vertical alignment to avoid overlap with arrowhead
+# Continue with your plot generation code...
+fviz_mca_biplot(
+  mca_result,
+  label = "none",                      
+  habillage = df_mca$Taxonomic.group,    
+  addEllipses = TRUE,                  
+  ellipse.level = 0.95,                
+  palette = "Set1",                    
+  geom.var = "none",                   
+  geom.ind = "point"                   
+) +
+  theme_minimal() +                    
+  theme(
+    legend.position = "right",         
+    axis.text.x = element_text(size = 14),  
+    axis.text.y = element_text(size = 14),  
+    axis.title.x = element_text(size = 16), 
+    axis.title.y = element_text(size = 16)  
+  ) +
+  labs(
+    x = paste0("Dim 1 (", round(percent_var[1], 1), "%)"),
+    y = paste0("Dim 2 (", round(percent_var[2], 1), "%)")
+  ) +
+  geom_text_repel(
+    data = present_coords,             
+    aes(x = label_x,                   
+        y = label_y,                   
+        label = polymer),              
+    size = 4,                          
+    max.overlaps = 50,                  
+    box.padding = 0.5,                  
+    point.padding = 0.5,                
+    min.segment.length = 0.5,           
+    segment.color = NA                 
+  ) +
+  scale_x_continuous(
+    limits = x_limit                   
+  ) +
+  scale_y_continuous(
+    limits = y_limit                   
   )

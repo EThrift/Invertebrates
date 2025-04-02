@@ -22,26 +22,35 @@ df_shape <- read.csv("Fragment.csv")
 
 # Remove spaces from column names
 colnames(df_shape) <- make.names(colnames(df_shape))
+
+df_shape$Biomass_log <- log(df_shape$Biomass)
+
+# Zero-inflated model using glmmTMB
+Fragment_tax1 <- glmmTMB(Fragment
+                                      ~ (1 | Site) + Land.cover + offset(Biomass_log), 
+                                      data = df_shape, 
+                                      family = binomial(link = "logit"))  
+
+# View the summary 
+summary(Fragment_tax1)
+
+# Another model with Taxonomic.group added
 Fragment_tax <- glmmTMB(Fragment
-                   ~ Land.cover + (1 | Site), 
-                   data = df_shape, 
-                   family = binomial(link = "logit"))
-summary(Fragment_tax)
+                                   ~Land.cover + Taxonomic.group + (1 | Site) + offset(Biomass_log), 
+                                   data = df_shape, 
+                                   family = binomial(link = "logit"))
 
-
-Fragment_tax_simplified <- glmmTMB(Fragment
-                                 ~Land.cover +  Taxonomic.group + (1 | Site), 
-                                 data = df_shape, 
-                                 family = binomial(link = "logit"))
-
+# View the summary of this model
 summary(Fragment_tax_simplified)
 
-anova(Fragment_tax, Fragment_tax_simplified)
+# Anova to compare models
+anova(Fragment_tax1, Fragment_tax_simplified)
+check_collinearity(Fragment_tax1)
 
-#taxonomic group did not have a significant impact on model p = 0.076
+#taxonomic group did not have a significant impact on model chi = 0.29, p = 0.99
 
 # Simulate residuals
-sim_res <- simulateResiduals(fittedModel = Fragment_tax)
+sim_res <- simulateResiduals(fittedModel = Fragment_tax_zero_inflated)
 
 # Plot diagnostics
 plot(sim_res)
@@ -57,19 +66,25 @@ testDispersion(sim_res)
 #check for perfect separation 
 table(df_shape$Trophic.level, df_shape$Fragment)
 
+
 # Exclude rows where Trophic level is omnivore due to a lack of results 
 df_shape_filtered <- df_shape[!(df_shape$Trophic.level %in% c("Omnivore")), ]
 
+# Ensure Biomass is properly log-transformed and scaled
+df_shape_filtered$Biomass_log <- scale(log(df_shape_filtered$Biomass))
 
+# Now fit the model
 Fragment_tro <- glmmTMB(Fragment
-                        ~ Land.cover + (1 | Site), 
+                        ~ Land.cover + (1 | Site) + offset(Biomass_log), 
                         data = df_shape_filtered, 
                         family = binomial(link = "logit"))
+
+# View the summary of the model
 summary(Fragment_tro)
 
 
 Fragment_tro_simplified <- glmmTMB(Fragment
-                                   ~Land.cover + Trophic.level + (1 | Site), 
+                                   ~  Trophic.level + Land.cover+(1 | Site) + offset(Biomass_log), 
                                    data = df_shape_filtered, 
                                    family = binomial(link = "logit"))
 
@@ -77,25 +92,17 @@ summary(Fragment_tro_simplified)
 
 anova(Fragment_tro,Fragment_tro_simplified)
 
-#trophic level did not have a significant impact p = 0.11
-
+#trophic level did not have a significant impact chi = 0.24, p = 0.88
+check_collinearity(Fragment_tro)
 # Simulate residuals
 sim_res <- simulateResiduals(fittedModel = Fragment_tro)
 
 # Plot diagnostics
 plot(sim_res)
-#QQplot shows bad fit deviations detected
+
 
 # Overdispersion test using DHARMa
 testDispersion(sim_res)
-
-#not overdispersed p = 0.76
-
-
-#pairwise comparisons 
-# Calculate the estimated marginal means for Trophic.level
-emmeans_tro_group <- emmeans(Fragment_tro, ~ Trophic.level)
-
 
 
 
